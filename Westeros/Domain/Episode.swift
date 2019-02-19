@@ -28,6 +28,10 @@ extension Episode {
     var proxyForEquality: String {
         return "\(season?.name ?? "") \(title) \(airDate)"
     }
+    
+    var proxyForComparison: String {
+        return "\(season?.name ?? "") \(title) \(airDate)"
+    }
 }
 
 extension Episode: CustomStringConvertible {
@@ -50,7 +54,7 @@ extension Episode: Hashable {
 
 extension Episode: Comparable {
     static func < (lhs: Episode, rhs: Episode) -> Bool {
-        return lhs.proxyForEquality < rhs.proxyForEquality
+        return lhs.proxyForComparison < rhs.proxyForComparison
     }
     
     

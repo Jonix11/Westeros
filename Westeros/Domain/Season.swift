@@ -23,3 +23,39 @@ final class Season {
         _episodes = Episodes()
     }
 }
+
+extension Season {
+    var proxyForEquality: String {
+        return "\(name) \(releaseDate)"
+    }
+
+    var proxyForComparison: String {
+        return "\(name) \(releaseDate)"
+    }
+}
+
+extension Season: CustomStringConvertible {
+    var description: String {
+        return proxyForEquality
+    }
+}
+
+extension Season: Equatable {
+    static func == (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyForEquality == rhs.proxyForEquality
+    }
+}
+
+extension Season: Hashable {
+    var hashValue: Int {
+        return proxyForEquality.hashValue
+    }
+}
+
+extension Season: Comparable {
+    static func < (lhs: Season, rhs: Season) -> Bool {
+        return lhs.proxyForComparison < rhs.proxyForComparison
+    }
+    
+    
+}
