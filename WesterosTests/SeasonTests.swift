@@ -12,18 +12,32 @@ import XCTest
 class SeasonTests: XCTestCase {
     var season1: Season!
     var season2: Season!
-    var date1: Date!
-    var date2: Date!
+    var episode1_1: Episode!
+    var episode2_1: Episode!
+    var episode1_2: Episode!
+    var season1Date: Date!
+    var episodeDate: Date!
+    var season2Date: Date!
 
     override func setUp() {
         var dateStr = "17/04/2011"
         let format = DateFormatter()
         format.dateFormat = "dd/MM/yyyy"
-        date1 = format.date(from: dateStr)!
+        season1Date = format.date(from: dateStr)!
+        episodeDate = format.date(from: dateStr)!
+        
+        season1 = Season(name: "Season 1", releaseDate: season1Date)
+        episode1_1 = Episode(title: "Winter Is Coming", airDate: episodeDate, season: season1)
+        
+        dateStr = "24/04/2011"
+        episodeDate = format.date(from: dateStr)!
+        episode2_1 = Episode(title: "The Kingsroad", airDate: episodeDate, season: season1)
+        
         dateStr = "01/04/2012"
-        date2 = format.date(from: dateStr)
-        season1 = Season(name: "Season 1", releaseDate: date1)
-        season2 = Season(name: "Season 2", releaseDate: date2)
+        season2Date = format.date(from: dateStr)
+        episodeDate = format.date(from: dateStr)
+        season2 = Season(name: "Season 2", releaseDate: season2Date)
+        episode1_2 = Episode(title: "The North Remembers", airDate: episodeDate, season: season2)
     }
 
     override func tearDown() {
@@ -38,6 +52,29 @@ class SeasonTests: XCTestCase {
         XCTAssertNotNil(season1.description)
     }
     
+    func testSeasonAddEpisode() {
+        XCTAssertEqual(season1.count, 0)
+        
+        season1.add(episode: episode1_1)
+        XCTAssertEqual(season1.count, 1)
+        
+        season1.add(episode: episode2_1)
+        XCTAssertEqual(season1.count, 2)
+        
+        season1.add(episode: episode1_2)
+        XCTAssertEqual(season1.count, 2)
+    }
+    
+    func testSeasonAddEpisodesAtOnce() {
+        season1.add(episodes: episode1_1, episode2_1, episode1_2)
+        XCTAssertEqual(season1.count, 2)
+    }
+    
+    func testSeasonEpisodesSorted() {
+        season1.add(episodes: episode1_1, episode2_1)
+        XCTAssertEqual(season1.episodesSorted, season1.episodesSorted.sorted())
+    }
+    
     func testSeasonHashable() {
         XCTAssertNotNil(season1.hashValue)
     }
@@ -47,7 +84,7 @@ class SeasonTests: XCTestCase {
         XCTAssertEqual(season1, season1)
         
         // Equality
-        let season = Season(name: "Season 1", releaseDate: date1)
+        let season = Season(name: "Season 1", releaseDate: season1Date)
         XCTAssertEqual(season1, season)
         
         // Inequality

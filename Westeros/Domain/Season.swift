@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias Episodes = Set<String>
+typealias Episodes = Set<Episode>
 
 final class Season {
     // MARK: Properties
@@ -25,12 +25,31 @@ final class Season {
 }
 
 extension Season {
+    var count: Int {
+        return _episodes.count
+    }
+    
+    var episodesSorted: [Episode] {
+        return _episodes.sorted()
+    }
+    
+    func add(episode: Episode) {
+        guard episode.season == self else { return }
+        _episodes.insert(episode)
+    }
+    
+    func add(episodes: Episode...) {
+        episodes.forEach{ add(episode: $0) }
+    }
+}
+
+extension Season {
     var proxyForEquality: String {
         return "\(name) \(releaseDate)"
     }
 
-    var proxyForComparison: String {
-        return "\(name) \(releaseDate)"
+    var proxyForComparison: Date {
+        return releaseDate
     }
 }
 

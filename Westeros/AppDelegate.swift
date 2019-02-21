@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Crearno los modelos
         let houses = Repository.local.houses
         
+        let seasons = Repository.local.seasons
+        
+        let seasonListViewController = SeasonListViewController(model: seasons)
+        
         
         // Crear el combinador
         //let tabBarController = UITabBarController()
@@ -48,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Asignamos el rootViewController del window
-        window?.rootViewController = splitViewController
+        //-------window?.rootViewController = splitViewController
+        
+        window?.rootViewController = seasonListViewController.wrappedInNavigation()
         
         // Para hacer uso de la collectionView
         // window?.rootViewController = HouseCollectionViewController(model: houses)

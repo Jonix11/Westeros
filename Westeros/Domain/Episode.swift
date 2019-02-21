@@ -29,8 +29,8 @@ extension Episode {
         return "\(season?.name ?? "") \(title) \(airDate)"
     }
     
-    var proxyForComparison: String {
-        return "\(season?.name ?? "") \(title) \(airDate)"
+    var proxyForComparison: Date {
+        return airDate
     }
 }
 

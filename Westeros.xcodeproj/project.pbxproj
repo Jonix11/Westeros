@@ -30,6 +30,8 @@
 		ACFC2EF0221B4CEE00D10259 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EEF221B4CEE00D10259 /* Season.swift */; };
 		ACFC2EF2221B5C9200D10259 /* EpisodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EF1221B5C9200D10259 /* EpisodeTests.swift */; };
 		ACFC2EF4221B5D4300D10259 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EF3221B5D4300D10259 /* Episode.swift */; };
+		ACFC2EF7221F1C8600D10259 /* SeasonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EF5221F1C8600D10259 /* SeasonListViewController.swift */; };
+		ACFC2EF8221F1C8600D10259 /* SeasonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFC2EF6221F1C8600D10259 /* SeasonListViewController.xib */; };
 		ACFE84C9220392A50006381A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE84C8220392A50006381A /* AppDelegate.swift */; };
 		ACFE84D0220392A60006381A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACFE84CF220392A60006381A /* Assets.xcassets */; };
 		ACFE84D3220392A60006381A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFE84D1220392A60006381A /* LaunchScreen.storyboard */; };
@@ -74,6 +76,8 @@
 		ACFC2EEF221B4CEE00D10259 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		ACFC2EF1221B5C9200D10259 /* EpisodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTests.swift; sourceTree = "<group>"; };
 		ACFC2EF3221B5D4300D10259 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		ACFC2EF5221F1C8600D10259 /* SeasonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListViewController.swift; sourceTree = "<group>"; };
+		ACFC2EF6221F1C8600D10259 /* SeasonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonListViewController.xib; sourceTree = "<group>"; };
 		ACFE84C5220392A50006381A /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFE84C8220392A50006381A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFE84CF220392A60006381A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				AC0B16852213789100D2C61F /* HouseCollectionViewController.xib */,
 				AC0B168822137B1D00D2C61F /* CollectionViewCell.swift */,
 				AC0B168922137B1D00D2C61F /* CollectionViewCell.xib */,
+				ACFC2EF5221F1C8600D10259 /* SeasonListViewController.swift */,
+				ACFC2EF6221F1C8600D10259 /* SeasonListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0B166C2208F2C600D2C61F /* lannister.jpg in Resources */,
+				ACFC2EF8221F1C8600D10259 /* SeasonListViewController.xib in Resources */,
 				AC0B1679220CB3D000D2C61F /* WikiViewController.xib in Resources */,
 				AC0B168B22137B1D00D2C61F /* CollectionViewCell.xib in Resources */,
 				ACFE84D3220392A60006381A /* LaunchScreen.storyboard in Resources */,
@@ -334,6 +341,7 @@
 				AC0B16862213789100D2C61F /* HouseCollectionViewController.swift in Sources */,
 				ACFE84F22203A9BC0006381A /* Person.swift in Sources */,
 				ACFC2EF0221B4CEE00D10259 /* Season.swift in Sources */,
+				ACFC2EF7221F1C8600D10259 /* SeasonListViewController.swift in Sources */,
 				ACFC2EF4221B5D4300D10259 /* Episode.swift in Sources */,
 				AC0B167C220CCDB800D2C61F /* HouseListViewController.swift in Sources */,
 			);
