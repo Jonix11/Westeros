@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let seasonListViewController = SeasonListViewController(model: seasons)
         
         
+        
         // Crear el combinador
         //let tabBarController = UITabBarController()
         //tabBarController.viewControllers = houses.map { HouseDetailViewController(model: $0).wrappedInNavigation()}

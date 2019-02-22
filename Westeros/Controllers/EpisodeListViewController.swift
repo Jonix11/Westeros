@@ -1,49 +1,46 @@
 //
-//  SeasonListViewController.swift
+//  EpisodeListViewController.swift
 //  Westeros
 //
-//  Created by Jon Gonzalez on 21/02/2019.
+//  Created by Jon Gonzalez on 22/02/2019.
 //  Copyright © 2019 Jon Gonzalez. All rights reserved.
 //
 
 import UIKit
 
-class SeasonListViewController: UIViewController {
+class EpisodeListViewController: UIViewController {
+
     // MARK: - Outlets
-    @IBOutlet weak var seasonTableView: UITableView!
+    @IBOutlet weak var episodeTableView: UITableView!
     
     // MARK: Properties
-    let model: [Season]
+    let model: [Episode]
     
     // MARK: Initialization
-    init(model: [Season]) {
+    init(model: [Episode]) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        title = "Game of Thrones Seasons"
+        title = "Episodes"
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add tableView datasource and delegate
-        seasonTableView.dataSource = self
-        seasonTableView.delegate = self
+        episodeTableView.dataSource = self
+        episodeTableView.delegate = self
         
-        seasonTableView.tableFooterView = UIView()
-        
+        episodeTableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
     }
 }
 
-extension SeasonListViewController: UITableViewDataSource {
-    
+extension EpisodeListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -54,36 +51,29 @@ extension SeasonListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Discover de season
-        let season = model[indexPath.row]
+        let episode = model[indexPath.row]
         
-        // ask cell to de tableView or create one
-        let cellId = "seasonCell"
-        var cell = seasonTableView.dequeueReusableCell(withIdentifier: cellId)
+        let cellId = "episodeCell"
+        var cell = episodeTableView.dequeueReusableCell(withIdentifier: cellId)
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
         }
         
-        // sync model and view
-        cell?.textLabel?.text = season.name
+        cell?.textLabel?.text = episode.title
         
-        // return the cell
         return cell!
     }
 }
-
-extension SeasonListViewController: UITableViewDelegate {
-    
+extension EpisodeListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let season = model[indexPath.row]
+        let episode = model[indexPath.row]
         
-        let seasonDetailViewController = SeasonDetailViewController(model: season)
+        let episodeDetailViewController = EpisodeDetailViewController(model: episode)
         
-        navigationController?.pushViewController(seasonDetailViewController, animated: true)
+        navigationController?.pushViewController(episodeDetailViewController, animated: true)
     }
-    
 }

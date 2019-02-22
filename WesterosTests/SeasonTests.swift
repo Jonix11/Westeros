@@ -26,18 +26,18 @@ class SeasonTests: XCTestCase {
         season1Date = format.date(from: dateStr)!
         episodeDate = format.date(from: dateStr)!
         
-        season1 = Season(name: "Season 1", releaseDate: season1Date)
-        episode1_1 = Episode(title: "Winter Is Coming", airDate: episodeDate, season: season1)
+        season1 = Season(name: "Season 1", releaseDate: season1Date, image: UIImage())
+        episode1_1 = Episode(title: "Winter Is Coming", airDate: episodeDate, summary: "Lord Stark is troubled by reports from a Night's Watch deserter; King Robert and the Lannisters arrive at Winterfell; Viserys Targaryen forges a new alliance.",season: season1)
         
         dateStr = "24/04/2011"
         episodeDate = format.date(from: dateStr)!
-        episode2_1 = Episode(title: "The Kingsroad", airDate: episodeDate, season: season1)
+        episode2_1 = Episode(title: "The Kingsroad", airDate: episodeDate, summary: "The Lannisters plot to ensure Bran's silence; Jon and Tyrion head to the Wall; Ned faces a family crisis en route to King's Landing.", season: season1)
         
         dateStr = "01/04/2012"
         season2Date = format.date(from: dateStr)
         episodeDate = format.date(from: dateStr)
-        season2 = Season(name: "Season 2", releaseDate: season2Date)
-        episode1_2 = Episode(title: "The North Remembers", airDate: episodeDate, season: season2)
+        season2 = Season(name: "Season 2", releaseDate: season2Date, image: UIImage())
+        episode1_2 = Episode(title: "The North Remembers", airDate: episodeDate, summary: "Tyrion arrives to save Joffrey's crown; Daenerys searches for allies and water in the Red Waste; Jon Snow faces the wilderness beyond the Wall.", season: season2)
     }
 
     override func tearDown() {
@@ -84,7 +84,7 @@ class SeasonTests: XCTestCase {
         XCTAssertEqual(season1, season1)
         
         // Equality
-        let season = Season(name: "Season 1", releaseDate: season1Date)
+        let season = Season(name: "Season 1", releaseDate: season1Date, image: UIImage())
         XCTAssertEqual(season1, season)
         
         // Inequality

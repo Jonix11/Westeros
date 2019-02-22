@@ -22,11 +22,11 @@ class EpisodeTests: XCTestCase {
         let format = DateFormatter()
         format.dateFormat = "dd/MM/yyyy"
         date1 = format.date(from: dateStr)!
-        season1 = Season(name: "Season 1", releaseDate: date1)
-        episode1_1 = Episode(title: "Winter Is Coming", airDate: date1, season: season1)
+        season1 = Season(name: "Season 1", releaseDate: date1, image: UIImage())
+        episode1_1 = Episode(title: "Winter Is Coming", airDate: date1, summary: "Lord Stark is troubled by reports from a Night's Watch deserter; King Robert and the Lannisters arrive at Winterfell; Viserys Targaryen forges a new alliance.", season: season1)
         dateStr = "24/04/2011"
         date2 = format.date(from: dateStr)
-        episode2_1 = Episode(title: "The Kingsroad", airDate: date2, season: season1)
+        episode2_1 = Episode(title: "The Kingsroad", airDate: date2, summary: "The Lannisters plot to ensure Bran's silence; Jon and Tyrion head to the Wall; Ned faces a family crisis en route to King's Landing.", season: season1)
     }
 
     override func tearDown() {
@@ -54,7 +54,7 @@ class EpisodeTests: XCTestCase {
         XCTAssertEqual(episode1_1, episode1_1)
         
         // Equality
-        let episode1 = Episode(title: "Winter Is Coming", airDate: date1, season: season1)
+        let episode1 = Episode(title: "Winter Is Coming", airDate: date1, summary: "Lord Stark is troubled by reports from a Night's Watch deserter; King Robert and the Lannisters arrive at Winterfell; Viserys Targaryen forges a new alliance.", season: season1)
         XCTAssertEqual(episode1, episode1_1)
         
         // Inequality
