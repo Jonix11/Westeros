@@ -14,7 +14,7 @@ class MemberListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    let model: [Person]
+    var model: [Person]
     
     // MARK: Initialization
     init(model: [Person]){
@@ -34,8 +34,23 @@ class MemberListViewController: UIViewController {
         // Te va a seguir ocurriendo tengas 10 días de experiencia o 10 años
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let notificationCenter = NotificationCenter.default
+        let name = Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME)
+        notificationCenter.addObserver(self, selector: #selector(houseDidChange(notification:)), name: name, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
     }
 
 }
@@ -67,5 +82,37 @@ extension MemberListViewController: UITableViewDataSource {
 }
 
 extension MemberListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let member = model[indexPath.row]
+        let memberDetailViewController = MemberDetailViewController(model: member)
+        
+        memberDetailViewController.delegate = self
+        
+        navigationController?.pushViewController(memberDetailViewController, animated: true)
+    }
+}
+
+extension MemberListViewController {
+    @objc func houseDidChange(notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        guard let house = info[HOUSE_KEY] as? House else {
+            return
+        }
+        model = house.sortedMembers
+        
+        let backNavButton = UIBarButtonItem(title: house.name, style: .plain, target: self, action: Selector(("none")))
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backNavButton
+        tableView.reloadData()
+    }
+}
+
+extension MemberListViewController: MemberDetailViewControllerDelegate {
+    func memberDetailViewController(_ viewController: MemberDetailViewController, didSelectHouse house: House) {
+        model = house.sortedMembers
+        tableView.reloadData()
+    }
+    
     
 }

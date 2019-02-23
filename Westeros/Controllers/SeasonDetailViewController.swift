@@ -16,7 +16,7 @@ class SeasonDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: Properties
-    let model: Season
+    var model: Season
     
     // MARK: Initialization
     init(model: Season) {
@@ -45,6 +45,7 @@ extension SeasonDetailViewController {
         seasonNameLabel.text = model.name
         seasonImageView.image = model.image
         dateLabel.text = "Release date: \(convertToString(date: model.releaseDate))"
+        title = model.name
     }
     
     func convertToString(date: Date) -> String {
@@ -68,4 +69,13 @@ extension SeasonDetailViewController {
         
         navigationController?.pushViewController(episodeListViewController, animated: true)
     }
+}
+
+extension SeasonDetailViewController: SeasonListViewControllerDelegate {
+    func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason season: Season) {
+        self.model = season
+        syncModelWithView()
+    }
+    
+    
 }

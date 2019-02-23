@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jon Gonzalez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class Person {
     
@@ -14,6 +14,7 @@ final class Person {
     let name: String
     private let _alias: String?
     let house: House
+    let image: UIImage
     
     // Propiedad computada
     var alias: String {
@@ -36,10 +37,11 @@ final class Person {
     }
     
     // MARK: Initialization
-    init(name: String, alias: String? = nil, house: House) {
+    init(name: String, alias: String? = nil, house: House, image: UIImage) {
         self.name = name
         _alias = alias
         self.house = house
+        self.image = image
     }
     
 //    // Los convenience inits tienen que llamar a self.init (el designado) obligatoriamente

@@ -8,18 +8,23 @@
 
 import UIKit
 
+protocol SeasonListViewControllerDelegate: class {
+    func seasonListViewController(_ viewController: SeasonListViewController, didSelectSeason: Season)
+}
+
 class SeasonListViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var seasonTableView: UITableView!
     
     // MARK: Properties
     let model: [Season]
+    weak var delegate: SeasonListViewControllerDelegate?
     
     // MARK: Initialization
     init(model: [Season]) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        title = "Game of Thrones Seasons"
+        title = "Seasons"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -81,9 +86,33 @@ extension SeasonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let season = model[indexPath.row]
         
-        let seasonDetailViewController = SeasonDetailViewController(model: season)
+        delegate?.seasonListViewController(self, didSelectSeason: season)
         
-        navigationController?.pushViewController(seasonDetailViewController, animated: true)
+        // Create the notification center
+        let notificationCenter = NotificationCenter.default
+        // Create the notification
+        let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [SEASON_KEY: season])
+        // send the notification
+        notificationCenter.post(notification)
+        
+        
+        saveLastSeasonSelected(withIndex: indexPath.row)
+    }
+}
+
+extension SeasonListViewController {
+    func saveLastSeasonSelected(withIndex index: Int) {
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(index, forKey: LAST_SEASON_KEY)
+        
+        userDefaults.synchronize()
     }
     
+    func lastSeasonSelected() -> Season {
+        let userDefaults = UserDefaults.standard
+        let index = userDefaults.integer(forKey: LAST_SEASON_KEY)
+        
+        return model[index]
+    }
 }

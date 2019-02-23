@@ -14,7 +14,7 @@ class EpisodeListViewController: UIViewController {
     @IBOutlet weak var episodeTableView: UITableView!
     
     // MARK: Properties
-    let model: [Episode]
+    var model: [Episode]
     
     // MARK: Initialization
     init(model: [Episode]) {
@@ -37,6 +37,21 @@ class EpisodeListViewController: UIViewController {
         episodeTableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let notificationCenter = NotificationCenter.default
+        let name = Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME)
+        notificationCenter.addObserver(self, selector: #selector(seasonDidChange(notification:)), name: name, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
     }
 }
 
@@ -74,6 +89,34 @@ extension EpisodeListViewController: UITableViewDelegate {
         
         let episodeDetailViewController = EpisodeDetailViewController(model: episode)
         
+        episodeDetailViewController.delegate = self
+        
         navigationController?.pushViewController(episodeDetailViewController, animated: true)
     }
+}
+
+extension EpisodeListViewController {
+    // MARK: Notification
+    @objc func seasonDidChange(notification: Notification) {
+        guard let info = notification.userInfo else {
+            return
+        }
+        guard let season = info[SEASON_KEY] as? Season else {
+            return
+        }
+        
+        model = season.episodesSorted
+        let buttonTitle = season.name
+        let backNavButton = UIBarButtonItem(title: buttonTitle, style: .plain, target: self, action: Selector(("none")))
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backNavButton
+        episodeTableView.reloadData()
+    }
+}
+extension EpisodeListViewController: EpisodeDetailViewControllerDelegate {
+    func episodeDetailViewController(_ viewController: EpisodeDetailViewController, didSelectSeason season: Season) {
+        model = season.episodesSorted
+        episodeTableView.reloadData()
+    }
+    
+    
 }
