@@ -28,7 +28,7 @@ final class Episode {
 
 extension Episode {
     var proxyForEquality: String {
-        return "\(season?.name ?? "") \(title) \(airDate)"
+        return "\(title) \(airDate)"
     }
     
     var proxyForComparison: Date {

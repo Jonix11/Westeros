@@ -26,6 +26,7 @@
 		AC0B16872213789100D2C61F /* HouseCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0B16852213789100D2C61F /* HouseCollectionViewController.xib */; };
 		AC0B168A22137B1D00D2C61F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0B168822137B1D00D2C61F /* CollectionViewCell.swift */; };
 		AC0B168B22137B1D00D2C61F /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0B168922137B1D00D2C61F /* CollectionViewCell.xib */; };
+		AC3E04052222CF3D00F62A1F /* InitialSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3E04042222CF3D00F62A1F /* InitialSplitViewController.swift */; };
 		ACFC2EEE221B4C3B00D10259 /* SeasonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EED221B4C3B00D10259 /* SeasonTests.swift */; };
 		ACFC2EF0221B4CEE00D10259 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EEF221B4CEE00D10259 /* Season.swift */; };
 		ACFC2EF2221B5C9200D10259 /* EpisodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC2EF1221B5C9200D10259 /* EpisodeTests.swift */; };
@@ -93,6 +94,7 @@
 		AC0B16852213789100D2C61F /* HouseCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseCollectionViewController.xib; sourceTree = "<group>"; };
 		AC0B168822137B1D00D2C61F /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0B168922137B1D00D2C61F /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		AC3E04042222CF3D00F62A1F /* InitialSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSplitViewController.swift; sourceTree = "<group>"; };
 		ACFC2EED221B4C3B00D10259 /* SeasonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTests.swift; sourceTree = "<group>"; };
 		ACFC2EEF221B4CEE00D10259 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		ACFC2EF1221B5C9200D10259 /* EpisodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTests.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				ACFC2F142220985000D10259 /* EpisodeDetailViewController.xib */,
 				ACFC2F1D2221B85F00D10259 /* MemberDetailViewController.swift */,
 				ACFC2F1E2221B85F00D10259 /* MemberDetailViewController.xib */,
+				AC3E04042222CF3D00F62A1F /* InitialSplitViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				AC0B16832212227C00D2C61F /* Constants.swift in Sources */,
 				AC0B16702208FF1400D2C61F /* UIViewController+Navigation.swift in Sources */,
 				AC0B16652208EA4F00D2C61F /* HouseDetailViewController.swift in Sources */,
+				AC3E04052222CF3D00F62A1F /* InitialSplitViewController.swift in Sources */,
 				ACFE84EE2203A6E70006381A /* Sigil.swift in Sources */,
 				ACFC2F0D2220782900D10259 /* EpisodeListViewController.swift in Sources */,
 				AC0B1680220CE5EA00D2C61F /* MemberListViewController.swift in Sources */,

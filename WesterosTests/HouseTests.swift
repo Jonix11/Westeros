@@ -31,9 +31,6 @@ class HouseTests: XCTestCase {
         starkHouse = House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno", wikiURL: starkURL)
         lannisterHouse = House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido", wikiURL: lannisterURL)
         
-        robb = Person(name: "Robb", alias: "El joven lobo", house: starkHouse, image: UIImage())
-        arya = Person(name: "Arya", house: starkHouse, image: UIImage())
-        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, image: UIImage())
     }
 
     override func tearDown() {
@@ -52,23 +49,26 @@ class HouseTests: XCTestCase {
         XCTAssertNotNil(lannisterSigil)
     }
     
-    func testHouseAddPerson() {
+    func testHouseAddPersonAtCreatePerson() {
         XCTAssertEqual(starkHouse.count, 0)
-        starkHouse.add(person: robb)
+        robb = Person(name: "Robb", alias: "El joven lobo", house: starkHouse, image: UIImage())
         
         XCTAssertEqual(starkHouse.count, 1)
+        arya = Person(name: "Arya", house: starkHouse, image: UIImage())
         
-        starkHouse.add(person: arya)
         XCTAssertEqual(starkHouse.count, 2)
         
         starkHouse.add(person: arya)
         XCTAssertEqual(starkHouse.count, 2)
         
-        starkHouse.add(person: tyrion)
+        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, image: UIImage())
         XCTAssertEqual(starkHouse.count, 2)
     }
     
     func testHouseAddPersonsAtOnce() {
+        robb = Person(name: "Robb", alias: "El joven lobo", house: starkHouse, image: UIImage())
+        arya = Person(name: "Arya", house: starkHouse, image: UIImage())
+        tyrion = Person(name: "Tyrion", alias: "El Enano", house: lannisterHouse, image: UIImage())
         starkHouse.add(persons: robb, arya, tyrion)
         XCTAssertEqual(starkHouse.count, 2)
     }

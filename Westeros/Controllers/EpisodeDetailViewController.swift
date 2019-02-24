@@ -36,6 +36,8 @@ class EpisodeDetailViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "\(model.season?.name ?? "Season") episodes", style: .plain, target: self, action: Selector(("none")))
         syncModelWithView()
         // Do any additional setup after loading the view.
     }

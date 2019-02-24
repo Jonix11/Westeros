@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum Houses: String {
+    case stark = "Stark"
+    case lannister = "Lannister"
+    case targaryen = "Targaryen"
+}
+
 final class Repository {
     static let local = LocalFactory() // Una variable estática es una variable de la clase
 }
@@ -16,6 +22,7 @@ protocol HouseFactory {
     typealias houseFilter = (House) -> Bool
     var houses: [House] { get } // sólo get porque será de sólo lectura
     func house(named: String) -> House?
+    func house(named: Houses) -> House?
     func houses(filteredBy filter: houseFilter) -> [House]
 }
 
@@ -49,9 +56,9 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         let jaime = Person(name: "Jaime", alias: "El matarreyes", house: lannisterHouse, image: UIImage(named: "JaimeLannister")!)
         let dani = Person(name: "Daenerys", alias: "Madre de Dragones", house: targaryenHouse, image: UIImage(named: "DaenerysTargaryen")!)
         
-        starkHouse.add(persons: robb, arya)
-        lannisterHouse.add(persons: tyrion, cersei, jaime)
-        targaryenHouse.add(person: dani)
+//        starkHouse.add(persons: robb, arya)
+//        lannisterHouse.add(persons: tyrion, cersei, jaime)
+//        targaryenHouse.add(person: dani)
         
         
         return [targaryenHouse, starkHouse, lannisterHouse].sorted()
@@ -60,6 +67,11 @@ final class LocalFactory: HouseFactory, SeasonFactory {
     func house(named name: String) -> House? {
         // let house = houses.filter { $0.name == name }.first
         let house = houses.first { $0.name.uppercased() == name.uppercased() } // con uppercased() "normalizamos los valores"
+        return house
+    }
+    
+    func house(named name: Houses) -> House? {
+        let house = houses.first { $0.name.uppercased() == name.rawValue.uppercased() }
         return house
     }
     
@@ -79,7 +91,7 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         
         
         let season1 = Season(name: "Season 1", releaseDate: seasonDate, image: UIImage(named: "Season1")!)
-        let epidode1_1 = Episode(title: "Winter Is Coming", airDate: episodeDate, summary: "Lord Stark is troubled by reports from a Night's Watch deserter; King Robert and the Lannisters arrive at Winterfell; Viserys Targaryen forges a new alliance.",season: season1)
+        let episode1_1 = Episode(title: "Winter Is Coming", airDate: episodeDate, summary: "Lord Stark is troubled by reports from a Night's Watch deserter; King Robert and the Lannisters arrive at Winterfell; Viserys Targaryen forges a new alliance.",season: season1)
         dateStr = "24/04/2011"
         episodeDate = format.date(from: dateStr)!
         let episode2_1 = Episode(title: "The Kingsroad", airDate: episodeDate, summary: "The Lannisters plot to ensure Bran's silence; Jon and Tyrion head to the Wall; Ned faces a family crisis en route to King's Landing.",season: season1)
@@ -139,7 +151,7 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         let episode2_7 = Episode(title: "Stormborn", airDate: episodeDate, summary: "Daenerys receives an unexpected visitor; Jon faces a revolt.", season: season7)
         
         // add episodes to seasons
-        season1.add(episodes: epidode1_1, episode2_1)
+        season1.add(episodes: episode1_1, episode2_1)
         season2.add(episodes: episode1_2, episode2_2)
         season3.add(episodes: episode1_3, episode2_3)
         season4.add(episodes: episode1_4, episode2_4)

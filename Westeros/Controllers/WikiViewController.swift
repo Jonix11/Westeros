@@ -76,6 +76,8 @@ class WikiViewController: UIViewController {
         model = house
         
         // Sincronizar modelo y vista
+        let backNavButton = UIBarButtonItem(title: house.name, style: .plain, target: self, action: Selector(("none")))
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backNavButton
         syncModelWithView()
     }
 

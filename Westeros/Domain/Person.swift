@@ -42,6 +42,7 @@ final class Person {
         _alias = alias
         self.house = house
         self.image = image
+        self.house.add(person: self)
     }
     
 //    // Los convenience inits tienen que llamar a self.init (el designado) obligatoriamente

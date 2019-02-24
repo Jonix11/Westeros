@@ -76,13 +76,6 @@ class HouseListViewController: UITableViewController {
         let house = model[indexPath.row]
         
         
-        
-//        // Crear el controlador de detalle de esa casa
-//        let houseDetailViewController = HouseDetailViewController(model: house)
-//
-//        // Vamos a mostrarlo (push)
-//        navigationController?.pushViewController(houseDetailViewController, animated: true)
-        
         // Avisamos al delegado
         // Quien quiera, que se conforme al HouseListViewController para hacer lo que tenga que hacer
         delegate?.houseListViewController(self, didSelectHouse: house)

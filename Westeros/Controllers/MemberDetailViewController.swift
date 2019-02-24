@@ -38,6 +38,7 @@ class MemberDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: model.house.name, style: .plain, target: self, action: Selector(("none")))
         syncModelWithView()
         // Do any additional setup after loading the view.
     }

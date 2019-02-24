@@ -48,6 +48,13 @@ class RepositoryTests: XCTestCase {
         let keepcoding = Repository.local.house(named: "Keepcoding")
         XCTAssertNil(keepcoding)
     }
+    
+    func testLocalRepositoryReturnHousesByNameCaseInsensitivelyUsingTypeSafe() {
+        let lannister = Repository.local.house(named: .lannister)
+        XCTAssertNotNil(lannister)
+        XCTAssertEqual(lannister?.name, "Lannister")
+    }
+    
     // given - when - then
     func testLocalRepository_HousesFilteredBy_ReturnsTheCorrectValue() {
         // let filtered = Repository.local.houses { $0.count == 1 }
