@@ -83,6 +83,4 @@ extension HouseDetailViewController: HouseListViewControllerDelegate {
         // Sincroniza modelo (el nuevo) con la vista
         syncModelWithView()
     }
-    
-    
 }

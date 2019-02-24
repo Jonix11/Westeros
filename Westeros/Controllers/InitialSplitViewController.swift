@@ -42,8 +42,8 @@ class InitialSplitViewController: UISplitViewController {
         // Create UITabBarController
         let tabBarController = UITabBarController()
         // Create UITabBarItem
-        let houseTabBarItem: UITabBarItem = UITabBarItem(title: "Houses", image: UIImage(), tag: 1)
-        let seasonTabBarItem = UITabBarItem(title: "Seasons", image: UIImage(), tag: 2)
+        let houseTabBarItem: UITabBarItem = UITabBarItem(title: "Houses", image: UIImage(named: "house"), tag: 1)
+        let seasonTabBarItem = UITabBarItem(title: "Seasons", image: UIImage(named: "season"), tag: 2)
         // Assign TabBarItem to the controllers
         houseListViewController.tabBarItem = houseTabBarItem
         seasonListViewController.tabBarItem = seasonTabBarItem
@@ -63,11 +63,13 @@ class InitialSplitViewController: UISplitViewController {
 
 extension InitialSplitViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        switch tabBarController.selectedIndex {
+        if self.isCollapsed == false {
+            switch tabBarController.selectedIndex {
             case 0:
-                self.showDetailViewController(houseDetailViewController.wrappedInNavigation(), sender: self)
+                self.show(houseDetailViewController.wrappedInNavigation(), sender: self)
             default:
-                self.showDetailViewController(seasonDetailViewController.wrappedInNavigation(), sender: self)
+                self.show(seasonDetailViewController.wrappedInNavigation(), sender: self)
+            }
         }
     }
 }

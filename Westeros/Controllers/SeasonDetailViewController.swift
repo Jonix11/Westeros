@@ -76,6 +76,4 @@ extension SeasonDetailViewController: SeasonListViewControllerDelegate {
         self.model = season
         syncModelWithView()
     }
-    
-    
 }

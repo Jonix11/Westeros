@@ -86,15 +86,19 @@ extension SeasonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let season = model[indexPath.row]
         
-        delegate?.seasonListViewController(self, didSelectSeason: season)
-        
-        // Create the notification center
-        let notificationCenter = NotificationCenter.default
-        // Create the notification
-        let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [SEASON_KEY: season])
-        // send the notification
-        notificationCenter.post(notification)
-        
+        if splitViewController?.isCollapsed == true {
+            let seasonDetailViewController = SeasonDetailViewController(model: season)
+            navigationController?.pushViewController(seasonDetailViewController, animated: true)
+        } else {
+            delegate?.seasonListViewController(self, didSelectSeason: season)
+            
+            // Create the notification center
+            let notificationCenter = NotificationCenter.default
+            // Create the notification
+            let notification = Notification(name: Notification.Name(SEASON_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [SEASON_KEY: season])
+            // send the notification
+            notificationCenter.post(notification)
+        }
         
         saveLastSeasonSelected(withIndex: indexPath.row)
     }

@@ -75,18 +75,21 @@ class HouseListViewController: UITableViewController {
         // Averiguar la casa que se ha pulsado
         let house = model[indexPath.row]
         
-        
-        // Avisamos al delegado
-        // Quien quiera, que se conforme al HouseListViewController para hacer lo que tenga que hacer
-        delegate?.houseListViewController(self, didSelectHouse: house)
-        
-        // Emitir la misma info por notificaciones
-        let notificationCenter = NotificationCenter.default
-        // Creamos la notificación
-        let notification = Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [HOUSE_KEY: house])
-        // Enviamos la notificación
-        notificationCenter.post(notification)
-        
+        if splitViewController?.isCollapsed == true {
+            let houseDetailViewController = HouseDetailViewController(model: house)
+            navigationController?.pushViewController(houseDetailViewController, animated: true)
+        } else {
+            // Avisamos al delegado
+            // Quien quiera, que se conforme al HouseListViewController para hacer lo que tenga que hacer
+            delegate?.houseListViewController(self, didSelectHouse: house)
+            
+            // Emitir la misma info por notificaciones
+            let notificationCenter = NotificationCenter.default
+            // Creamos la notificación
+            let notification = Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self, userInfo: [HOUSE_KEY: house])
+            // Enviamos la notificación
+            notificationCenter.post(notification)
+        }
         // Guardar la casa seleccionada
         saveLastSelectedHouse(at: indexPath.row)
     }

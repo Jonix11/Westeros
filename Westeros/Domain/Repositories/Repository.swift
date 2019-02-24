@@ -56,10 +56,6 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         let jaime = Person(name: "Jaime", alias: "El matarreyes", house: lannisterHouse, image: UIImage(named: "JaimeLannister")!)
         let dani = Person(name: "Daenerys", alias: "Madre de Dragones", house: targaryenHouse, image: UIImage(named: "DaenerysTargaryen")!)
         
-//        starkHouse.add(persons: robb, arya)
-//        lannisterHouse.add(persons: tyrion, cersei, jaime)
-//        targaryenHouse.add(person: dani)
-        
         
         return [targaryenHouse, starkHouse, lannisterHouse].sorted()
     }
@@ -95,6 +91,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "24/04/2011"
         episodeDate = format.date(from: dateStr)!
         let episode2_1 = Episode(title: "The Kingsroad", airDate: episodeDate, summary: "The Lannisters plot to ensure Bran's silence; Jon and Tyrion head to the Wall; Ned faces a family crisis en route to King's Landing.",season: season1)
+        dateStr = "01/05/2011"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_1 = Episode(title: "Lord Snow", airDate: episodeDate, summary: "Jon impresses Tyrion at Castle Black; Ned confronts his past and future at King's Landing; Daenerys finds herself at odds with Viserys.",season: season1)
+        dateStr = "08/05/2011"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_1 = Episode(title: "Cripples, Bastards, and Broken Things", airDate: episodeDate, summary: "Ned probes Arryn's death; Jon takes measures to protect Sam; Tyrion is caught in the wrong place.",season: season1)
         
         dateStr = "01/04/2012"
         seasonDate = format.date(from: dateStr)!
@@ -104,6 +106,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "08/04/2012"
         episodeDate = format.date(from: dateStr)!
         let episode2_2 = Episode(title: "The Night Lands", airDate: episodeDate, summary: "Arya shares a secret; a scout returns to Dany with disturbing news; Theon comes home to the Iron Islands; Tyrion administers justice; Jon witnesses a terrible crime.", season: season2)
+        dateStr = "15/04/2012"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_2 = Episode(title: "What Is Dead May Never Die", airDate: episodeDate, summary: "Tyrion roots out a spy; Catelyn meets a new king and queen; Bran dreams; Theon drowns.", season: season2)
+        dateStr = "22/04/2012"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_2 = Episode(title: "Garden of Bones", airDate: episodeDate, summary: "Catelyn tries to save two kings from themselves; Tyrion practices coercion; Robb meets a foreigner; Dany finds her ally; Melisandre casts a shadow on the Stormlands.", season: season2)
         
         dateStr = "31/03/2013"
         seasonDate = format.date(from: dateStr)!
@@ -113,6 +121,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "07/04/2013"
         episodeDate = format.date(from: dateStr)!
         let episode2_3 = Episode(title: "Dark Wings, Dark Words", airDate: episodeDate, summary: "Arya runs into the Brotherhood Without Banners; Jaime finds a way to pass the time.", season: season3)
+        dateStr = "14/04/2013"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_3 = Episode(title: "Walk of Punishment", airDate: episodeDate, summary: "Dany hears the price; Jaime strikes a deal with his captors.", season: season3)
+        dateStr = "21/04/2013"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_3 = Episode(title: "And Now His Watch Is Ended", airDate: episodeDate, summary: "The Night's Watch takes stock; Dany exchanges a chain for a whip.", season: season3)
         
         dateStr = "06/04/2014"
         seasonDate = format.date(from: dateStr)!
@@ -122,6 +136,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "13/04/2014"
         episodeDate = format.date(from: dateStr)!
         let episode2_4 = Episode(title: "The Lion and the Rose", airDate: episodeDate, summary: "The Lannisters and their guests gather in King's Landing.", season: season4)
+        dateStr = "20/04/2014"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_4 = Episode(title: "Breaker of Chains", airDate: episodeDate, summary: "Tyrion ponders his options; Tywin extends an olive branch; Jon proposes a bold plan.", season: season4)
+        dateStr = "27/04/2014"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_4 = Episode(title: "Oathkeeper", airDate: episodeDate, summary: "Dany balances justice and mercy; Jaime turns to Brienne; Jon readies his men.", season: season4)
         
         dateStr = "12/04/2015"
         seasonDate = format.date(from: dateStr)!
@@ -131,6 +151,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "19/04/2015"
         episodeDate = format.date(from: dateStr)!
         let episode2_5 = Episode(title: "The House of Black and White", airDate: episodeDate, summary: "Arya arrives in Braavos; Stannis tempts Jon.", season: season5)
+        dateStr = "26/04/2015"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_5 = Episode(title: "High Sparrow", airDate: episodeDate, summary: "Cersei does justice; Tyrion walks the Long Bridge of Volantis.", season: season5)
+        dateStr = "03/05/2015"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_5 = Episode(title: "Sons of the Harpy", airDate: episodeDate, summary: "The Faith Militant grow increasingly aggressive; Jaime and Bronn head south; Ellaria and the Sand Snakes vow vengeance.", season: season5)
         
         dateStr = "24/04/2016"
         seasonDate = format.date(from: dateStr)!
@@ -140,6 +166,12 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "01/05/2016"
         episodeDate = format.date(from: dateStr)!
         let episode2_6 = Episode(title: "Home", airDate: episodeDate, summary: "Bran goes home; The Night's Watch stands behind Thorne.", season: season6)
+        dateStr = "08/05/2016"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_6 = Episode(title: "Oathbreaker", airDate: episodeDate, summary: "Daenerys meets her future; Arya trains to be No One.", season: season6)
+        dateStr = "15/05/2016"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_6 = Episode(title: "Book of the Stranger", airDate: episodeDate, summary: "Tyrion strikes a deal; Jorah and Daario undertake a difficult task.", season: season6)
         
         dateStr = "16/07/2017"
         seasonDate = format.date(from: dateStr)!
@@ -149,15 +181,21 @@ final class LocalFactory: HouseFactory, SeasonFactory {
         dateStr = "23/07/2017"
         episodeDate = format.date(from: dateStr)!
         let episode2_7 = Episode(title: "Stormborn", airDate: episodeDate, summary: "Daenerys receives an unexpected visitor; Jon faces a revolt.", season: season7)
+        dateStr = "30/07/2017"
+        episodeDate = format.date(from: dateStr)!
+        let episode3_7 = Episode(title: "The Queen's Justice", airDate: episodeDate, summary: "Daenerys holds court; Cersei returns a gift.", season: season7)
+        dateStr = "06/08/2017"
+        episodeDate = format.date(from: dateStr)!
+        let episode4_7 = Episode(title: "The Spoils of War", airDate: episodeDate, summary: "The Lannisters pay their debts. Daenerys weighs her options.", season: season7)
         
         // add episodes to seasons
-        season1.add(episodes: episode1_1, episode2_1)
-        season2.add(episodes: episode1_2, episode2_2)
-        season3.add(episodes: episode1_3, episode2_3)
-        season4.add(episodes: episode1_4, episode2_4)
-        season5.add(episodes: episode1_5, episode2_5)
-        season6.add(episodes: episode1_6, episode2_6)
-        season7.add(episodes: episode1_7, episode2_7)
+        season1.add(episodes: episode1_1, episode2_1, episode3_1, episode4_1)
+        season2.add(episodes: episode1_2, episode2_2, episode3_2, episode4_2)
+        season3.add(episodes: episode1_3, episode2_3, episode3_3, episode4_3)
+        season4.add(episodes: episode1_4, episode2_4, episode3_4, episode4_4)
+        season5.add(episodes: episode1_5, episode2_5, episode3_5, episode4_5)
+        season6.add(episodes: episode1_6, episode2_6, episode3_6, episode4_6)
+        season7.add(episodes: episode1_7, episode2_7, episode3_7, episode4_7)
         
         return [season1, season2, season3, season4, season5, season6, season7].sorted()
     }

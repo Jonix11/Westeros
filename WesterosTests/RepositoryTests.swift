@@ -76,7 +76,7 @@ class RepositoryTests: XCTestCase {
     }
     
     func testLocalRepository_SeasonsFilteredBy_ReturnTheCorrectValue() {
-        var filtered = Repository.local.seasons(filteredBy: {$0.count == 2 })
+        var filtered = Repository.local.seasons(filteredBy: {$0.count == 4 })
         XCTAssertEqual(filtered.count, 7)
         
         let dateStr = "01/01/2014"
